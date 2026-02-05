@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HVLog - Des arcs de MOT et une Jacob's Ladder</title>
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+
+    <style>
+        .danger-header {
+            background: #7a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ff4444;
+            margin-bottom: 30px;
+        }
+
+        .video-container {
+            width: 100%; /* Prend toute la largeur du <main> */
+            margin: 20px 0;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav a:hover {
+            border-bottom-color: var(--nc-lk-1);
+        }
+
+        /* J'adore les burgers, mais bon */
+
+        #nav-toggle {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+            .burger {
+                display: block;
+            }
+
+            .nav {
+                position: absolute;
+                top: 4rem;
+                right: 1rem;
+                flex-direction: column;
+                background: var(--nc-bg-1);
+                padding: 1rem;
+                border: 1px solid var(--nc-bg-3);
+                border-radius: 8px;
+                display: none;
+            }
+
+            #nav-toggle:checked + .burger + .nav {
+                display: flex;
+            }
+        }
+
+        h1, h2, h3 {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <h1 class="logo">HVLog</h1>
+
+    <input type="checkbox" id="nav-toggle">
+    <label for="nav-toggle" class="burger">
+        ☰
+    </label>
+
+    <nav class="nav">
+        <a href="../index.html">Projets</a>
+        <a href="../presentation.html">Présentation</a>
+        <a href="../en/index.html" style="color: #444">EN</a>
+    </nav>
+</header>
+
+<main>
+    <div style="margin-top: 20px;" class="danger-header">
+        <h2 style="color: #ff4444; margin-top: 0;">⚠️ DANGER DE MORT</h2>
+        <p>Les MOT (Microwave Oven Transformers) ne sont pas des jouets. Ils délivrent un courant de <strong>plusieurs
+            ampères</strong> sous 2000V en court-circuit, environ 500mA dans un arc, ce qui est déjà suffisant pour
+            provoquer des brulures internes et externes. Une seule erreur de manipulation est fatale. Ne jamais
+            travailler seul, ainsi que sans les connaissances nécéssaires.</p>
+    </div>
+
+    <div class="video-container">
+        <iframe
+                src="https://www.youtube.com/embed/OMAXnMNJwAg"
+                title="MOT - High Voltage Experiment"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <h2>Comment fonctionne une Jacob's Ladder ?</h2>
+    <p> Une Jacob's Ladder (Echelle de Jacob) est l'une des "structure" haute tension les plus iconiques !</p>
+
+    <ul>
+        <li>
+            L'arc électrique : La tension et l'intensité sont suffisants pour maintenir un arc électrique entre les deux
+            électrodes.
+        </li>
+        <li>
+            L'ascension : Elle est dûe à la température de l'arc électrique. Il est extrêmement chaud. Comme l'air chaud
+            est
+            moins dense que l'air ambiant, il s'élève, emportant l'arc avec lui le long des tiges.
+        </li>
+    </ul>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

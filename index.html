@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HVLog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script>
+    const lang = navigator.language || navigator.userLanguage;
+
+    if (lang.startsWith("fr")) {
+        window.location.href = "/fr/";
+    } else {
+        window.location.href = "/en/";
+    }
+</script>
+
+</body>
+</html>

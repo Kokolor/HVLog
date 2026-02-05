@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HVLog - Présentation</title>
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+
+    <style>
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid var(--nc-bg-3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            border-color: var(--nc-lk-1);
+            text-decoration: none;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--nc-lk-1);
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            background-color: var(--nc-bg-2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 5px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo {
+            margin: 0;
+        }
+
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav a:hover {
+            border-bottom-color: var(--nc-lk-1);
+        }
+
+        /* J'adore les burgers, mais bon */
+
+        #nav-toggle {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+            .burger {
+                display: block;
+            }
+
+            .nav {
+                position: absolute;
+                top: 4rem;
+                right: 1rem;
+                flex-direction: column;
+                background: var(--nc-bg-1);
+                padding: 1rem;
+                border: 1px solid var(--nc-bg-3);
+                border-radius: 8px;
+                display: none;
+            }
+
+            #nav-toggle:checked + .burger + .nav {
+                display: flex;
+            }
+        }
+
+        h1, h2, h3 {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header">
+    <h1 class="logo">HVLog</h1>
+
+    <input type="checkbox" id="nav-toggle">
+    <label for="nav-toggle" class="burger">
+        ☰
+    </label>
+
+    <nav class="nav">
+        <a href="index.html">Projects</a>
+        <a href="about_me.html">About me</a>
+        <a href="../fr/index.html" style="color: #444">FR</a>
+    </nav>
+</header>
+
+<main>
+    <h1>About me</h1>
+    <p>I'm 15 years old. since I'm a kid, I'm interested in coding. I went from hardware (to build a lot of heavy
+        projects) to
+        very basic electronics and soldering. After this small introduction to electronics, I fell in love with high
+        voltage!
+
+        I started with a bad "400kV" aliExpress high voltage module. I found a CRT TV a month later, and extracted the
+        flyback transformer. I drove it with a pretty weak driver, but I did a ZVS driver afterward.
+
+        I finally started playing with MOTs. I have done some Jacobs's Ladder, Lichtenberg Figures, Tesla coils and I'm
+        still not dead!
+    </p>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Created with <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>
