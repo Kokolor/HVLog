@@ -8,13 +8,15 @@
 <body>
 
 <script>
-    const lang = navigator.language || navigator.userLanguage;
+    let path = window.location.pathname;
+    path = path.replace('index.html', '');
 
-    if (lang.startsWith("fr")) {
-        window.location.replace("./fr/index.html");
-    } else {
-        window.location.replace("./en/index.html");
+    if (!path.endsWith('/')) {
+        path += '/';
     }
+    
+    const finalUrl = window.location.origin + path + "fr/";
+    window.location.replace(finalUrl);
 </script>
 
 </body>
