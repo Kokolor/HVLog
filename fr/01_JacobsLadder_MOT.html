@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HVLog - Des arcs de MOT et une Jacob's Ladder</title>
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <div style="margin-top: 20px;" class="danger-header">
+        <h2 style="color: #ff4444; margin-top: 0;">⚠️ DANGER DE MORT</h2>
+        <p>Les MOT (Microwave Oven Transformers) ne sont pas des jouets. Ils délivrent un courant de <strong>plusieurs
+            ampères</strong> sous 2000V en court-circuit, environ 500mA dans un arc, ce qui est déjà suffisant pour
+            provoquer des brulures internes et externes. Une seule erreur de manipulation est fatale. Ne jamais
+            travailler seul, ainsi que sans les connaissances nécéssaires.</p>
+    </div>
+
+    <div class="video-container">
+        <iframe
+                src="https://www.youtube.com/embed/7eccLCE30y8"
+                title="MOT - High Voltage Experiment"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <h2>Comment fonctionne une Jacob's Ladder ?</h2>
+    <p> Une Jacob's Ladder (Echelle de Jacob) est l'une des "structure" haute tension les plus iconiques !</p>
+
+    <ul>
+        <li>
+            L'arc électrique : La tension et l'intensité sont suffisants pour maintenir un arc électrique entre les deux
+            électrodes.
+        </li>
+        <li>
+            L'ascension : Elle est dûe à la température de l'arc électrique. Il est extrêmement chaud. Comme l'air chaud
+            est
+            moins dense que l'air ambiant, il s'élève, emportant l'arc avec lui le long des tiges.
+        </li>
+    </ul>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

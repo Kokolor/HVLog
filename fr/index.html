@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>HVLog - Projets Terminés</title>
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <section>
+        <h2>Mes Projets Terminés</h2>
+
+        <div class="project-grid">
+            <a href="01_JacobsLadder_MOT.html" class="card">
+                <h3>Jacob's Ladder et MOT</h3>
+                <p>Des arcs de MOT et une Jacob's Ladder</p>
+                <div>
+                    <span class="tag">MOT</span>
+                    <span class="tag">Danger de mort</span>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

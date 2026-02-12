@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>HVLog - Atomes, isotopes et ions</title>
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <h2>L'atome</h2>
+    <p>Un atome est une particule neutre, comportant autant de protons (+) que d'électrons (-).</p>
+
+    <h2>L'ion</h2>
+    <p>Un ion est un atome qui n'est plus neutre, où le nombre de protons n'est plus égal au nombre d'électrons. Il y a
+        deux types d'ion :</p>
+    <h3>Le cation</h3>
+    <p>Le cation est un ion globalement positif, où le nombre d'électrons est inférieur au nombre de protons en raison
+        d'une perte d'électrons. Possible par exemple lors de la production de rayons-x qui sont des radiations
+        ionisantes. C'est-à-dire qu'elles "arrachent" les électrons aux atomes, ce phénomène s'appelle <strong>l'ionisation</strong>.
+    </p>
+    <h3>L'anion</h3>
+    <p>L'anion est le contraire du cation, où l'atome a gagné des électrons. L'atome devient donc globalement
+        négatif.</p>
+
+    <h2>L'isotope</h2>
+    <p>Un isotope se définit par deux valeurs :</p>
+    <ul>
+        <li>Z : Le numéro atomique, le nombre de protons. Il reste fixe pour le même élement.</li>
+        <li>A : Le nombre de masse, il est le nombre total de particules dans le noyau (protons + neutrons).</li>
+    </ul>
+
+    <p><strong>Deux isotopes sont des atomes ayant le même numéro atomique, mais un nombre de masse différent</strong>.
+        Un exemple serait le potassium-40 ou bien le césium-137, des isotopes radioactifs, car leur noyau a "trop ou
+        trop peu" de neutrons pour rester stable.</p>
+
+    <h2>Protons et neutrons</h2>
+    <p>Un proton, comme dit précédemment, est une particule dans le noyau ayant une charge positive. Le neutron quant à
+        lui, n'a pas de charge positive ou négative, il est neutre.<strong> Il est impossible de s'en passer</strong>,
+            car il serait impossible constituer un atome avec uniquement des protons. Ils se repousseraient
+        par force électrostatique, puisqu'ils seraient tous positifs.</p>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

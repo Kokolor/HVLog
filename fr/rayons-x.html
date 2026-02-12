@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>HVLog - Calculateur d'Atténuation</title>
+
+    <style>
+        .calc-container {
+            max-width: 450px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #resultat {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<!-- Je suis bien obligé d'assumer, merci Gemini hein, pas pour les données, mais pour le code ;( -->
+
+<main>
+    <div class="calc-container">
+        <h2>Calculateur d'atténuation de rayons-x</h2>
+        <div class="grid-inputs">
+            <div>
+                <label>Matériau:</label>
+                <select id="material">
+                    <option value="Pb">Pb</option>
+                    <option value="Fe">Fe</option>
+                </select>
+            </div>
+            <div>
+                <label>Énergie [keV]:</label>
+                <input type="number" id="energy" value="150">
+            </div>
+            <div>
+                <label>Épaisseur [mm]:</label>
+                <input type="number" id="thickness" value="2">
+            </div>
+            <div>
+                <label>Pression (seulement les gaz):</label>
+                <input type="number" id="pressure" value="1">
+            </div>
+        </div>
+
+        <button onclick="calculate()">Calculer</button>
+
+        <div class="results-section">
+            <h3>Résultats :</h3>
+            <div class="res-row"><span>Atténuation [%] :</span> <span class="val" id="res-att">--</span></div>
+            <div class="res-row"><span>Transmission [%] :</span> <span class="val" id="res-trans">--</span></div>
+
+            <div class="sub-title">Probabilité d'interaction [%] :</div>
+            <div class="res-row"><span>Photoabsorption :</span> <span class="val" id="p-photo">--</span></div>
+            <div class="res-row"><span>Diffusion Compton :</span> <span class="val" id="p-comp">--</span></div>
+            <div class="res-row"><span>Diffusion Rayleigh :</span> <span class="val" id="p-ray">--</span></div>
+            <div class="res-row"><span>Production de paires (champ nucléaire) :</span> <span class="val">0.0000</span>
+            </div>
+            <div class="res-row"><span>Production de paires (champ électronique) :</span> <span
+                    class="val">0.0000</span></div>
+
+            <div class="sub-title">Coefficient d'interaction [cm²/g] :</div>
+            <div class="res-row"><span>Photoabsorption :</span> <span class="val" id="c-photo">--</span></div>
+            <div class="res-row"><span>Diffusion Compton :</span> <span class="val" id="c-comp">--</span></div>
+            <div class="res-row"><span>Diffusion Rayleigh :</span> <span class="val" id="c-ray">--</span></div>
+            <div class="res-row"><span>Production de paires (champ nucléaire) :</span> <span class="val">0.0000</span>
+            </div>
+            <div class="res-row"><span>Production de paires (champ électronique) :</span> <span
+                    class="val">0.0000</span></div>
+            <div class="res-row"><span>Atténuation Totale :</span> <span class="val" id="c-total">--</span></div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const DATA = {
+        "Fe": {
+            rho: 7.87,
+            table: [
+                {e: 10, ray: 1.201, comp: 0.0854, photo: 169.4, total: 170.7},
+                {e: 13.04, ray: 0.8822, comp: 0.0983, photo: 82.65, total: 83.63},
+                {e: 15, ray: 0.7458, comp: 0.1047, photo: 56.23, total: 57.09},
+                {e: 20, ray: 0.5170, comp: 0.1162, photo: 25.05, total: 25.68},
+                {e: 30, ray: 0.2849, comp: 0.1286, photo: 7.763, total: 8.176},
+                {e: 40, ray: 0.1795, comp: 0.1338, photo: 3.316, total: 3.629},
+                {e: 50, ray: 0.1244, comp: 0.1355, photo: 1.697, total: 1.957},
+                {e: 60, ray: 0.0917, comp: 0.1355, photo: 0.9776, total: 1.205},
+                {e: 80, ray: 0.0560, comp: 0.1332, photo: 0.4060, total: 0.5952},
+                {e: 88, ray: 0.0473, comp: 0.1318, photo: 0.3030, total: 0.4822},
+                {e: 100, ray: 0.0376, comp: 0.1296, photo: 0.2045, total: 0.3717},
+                {e: 150, ray: 0.0178, comp: 0.1200, photo: 0.0586, total: 0.1964},
+                {e: 200, ray: 0.0103, comp: 0.1114, photo: 0.0243, total: 0.1460},
+                {e: 300, ray: 0.0047, comp: 0.0978, photo: 0.0072, total: 0.1099},
+                {e: 400, ray: 0.0026, comp: 0.0881, photo: 0.0032, total: 0.0940},
+                {e: 500, ray: 0.0017, comp: 0.0806, photo: 0.0017, total: 0.0841},
+                {e: 600, ray: 0.0012, comp: 0.0747, photo: 0.0011, total: 0.0770},
+                {e: 800, ray: 0.0006, comp: 0.0657, photo: 0.0005, total: 0.0669},
+                {e: 1000, ray: 0.0004, comp: 0.0591, photo: 0.0003, total: 0.0599}
+            ]
+        },
+        "Pb": {
+            rho: 11.35,
+            table: [
+                {e: 10, ray: 4.982, comp: 0.0454, photo: 125.6, total: 130.6},
+                {e: 13.04, ray: 3.851, comp: 0.0543, photo: 158.2, total: 162.1},
+                {e: 15, ray: 3.308, comp: 0.0592, photo: 108.2, total: 111.6},
+                {e: 20, ray: 2.338, comp: 0.0689, photo: 83.97, total: 86.37},
+                {e: 30, ray: 1.377, comp: 0.0822, photo: 28.86, total: 30.32},
+                {e: 50, ray: 0.6545, comp: 0.0947, photo: 7.292, total: 8.042},
+                {e: 88, ray: 0.2632, comp: 0.0992, photo: 7.321, total: 7.684},
+                {e: 100, ray: 0.2128, comp: 0.0989, photo: 5.237, total: 5.549},
+                {e: 200, ray: 0.0626, comp: 0.0896, photo: 0.8464, total: 0.9986},
+                {e: 500, ray: 0.0114, comp: 0.0673, photo: 0.0825, total: 0.1613},
+                {e: 1000, ray: 0.0029, comp: 0.0499, photo: 0.0181, total: 0.0710}
+            ]
+        }
+    };
+
+    function getInterp(e, table, key) {
+        if (e <= table[0].e) return table[0][key];
+        if (e >= table[table.length - 1].e) return table[table.length - 1][key];
+        for (let i = 0; i < table.length - 1; i++) {
+            if (e >= table[i].e && e <= table[i + 1].e) {
+                let ratio = (e - table[i].e) / (table[i + 1].e - table[i].e);
+                return table[i][key] + ratio * (table[i + 1][key] - table[i][key]);
+            }
+        }
+    }
+
+    function calculate() {
+        const e = parseFloat(document.getElementById('energy').value);
+        const d = parseFloat(document.getElementById('thickness').value);
+        const matKey = document.getElementById('material').value;
+        const material = DATA[matKey];
+
+        const cPhoto = getInterp(e, material.table, 'photo');
+        const cComp = getInterp(e, material.table, 'comp');
+        const cRay = getInterp(e, material.table, 'ray');
+        const cTotal = getInterp(e, material.table, 'total');
+
+        const x_cm = d / 10;
+        const trans = Math.exp(-(cTotal * material.rho * x_cm));
+        const atten = 1 - trans;
+
+        document.getElementById('res-att').innerText = (atten * 100).toFixed(4);
+        document.getElementById('res-trans').innerText = (trans * 100).toFixed(4);
+
+        document.getElementById('c-photo').innerText = cPhoto.toFixed(4);
+        document.getElementById('c-comp').innerText = cComp.toFixed(4);
+        document.getElementById('c-ray').innerText = cRay.toFixed(4);
+        document.getElementById('c-total').innerText = cTotal.toFixed(4);
+
+        document.getElementById('p-photo').innerText = (atten * (cPhoto / cTotal) * 100).toFixed(4);
+        document.getElementById('p-comp').innerText = (atten * (cComp / cTotal) * 100).toFixed(4);
+        document.getElementById('p-ray').innerText = (atten * (cRay / cTotal) * 100).toFixed(4);
+    }
+</script>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a> | Données NIST XCOM</p>
+</footer>
+</body>
+</html>

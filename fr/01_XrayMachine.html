@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>HVLog - Générateur à Rayons-X</title>
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <div style="margin-top: 20px;" class="danger-header">
+        <h2 style="color: #ff4444; margin-top: 0;">⚠️ DANGER</h2>
+
+        <p style="font-weight: bold; font-size: 25px;">
+            Ces radiations invisibles vous tuent de l'intérieur :)
+        </p>
+
+        <p style="line-height: 1.6;">
+            Les rayons X ne sont pas des arcs électriques visibles et bruts. Ce sont des radiations ionisantes, des
+            photons de haute énergie qui <strong>détruisent vos brins d'ADN</strong> et anéantissent vos cellules à
+            chaque impact. Elles peuvent engendrer des brûlures radiologiques qui, contrairement à une brûlure
+            classique, sont une <strong>nécrose</strong> invisible au départ, mais qui ronge la chair en quelques
+            semaines sans aucune chance de cicatrisation.
+        </p>
+
+        <p style="background: #5a0000; color: #ffffff; padding: 10px; font-weight: bold;;">
+            Brûlures radiologiques | Cancers | Syndrome d'Irradiation Aiguë
+        </p>
+
+        <p style="margin-bottom: 0; font-style: italic;">
+            Ne faites JAMAIS ces manipulations. Chaque seconde d'exposition fait subir des dégâts irréversibles à votre
+            corps !
+        </p>
+    </div>
+
+    <section>
+        <h1>Générateur à Rayons-X</h1>
+        <p>Cette page va vous permettre d'expliquer comment fonctionne un Générateur à Rayons-X comme le ferait un
+            individu ne tenant pas spécialement à sa vie souhaitant voir à travers des objets en utilisant la
+            fluoroscopie.
+
+            <strong>Puisque je suis un individu complètement dans les règles</strong>, je ne ferai jamais de générateur à Rayons-X en
+            France.</p>
+
+        <hr> <!-- Je viens d'apprendre ce que c'est mdrr -->
+
+        <!-- <h2>Architecture</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Composant</th>
+                <th>Type / Modèle</th>
+                <th>Rôle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th>Alimentation</th>
+                <th>Flyback</th>
+                <th>Sert à alimenter la cascade de Villard.</th>
+            </tr>
+            <tr>
+                <th>Cascade</th>
+                <th>Cascade de Villard</th>
+                <th>Sert à élever la tension d'environ 15-20kV à 40-100kV (pour le moment).</th>
+            </tr>
+            <tr>
+                <th>Tube</th>
+                <th>GP-5 (pour essayer) 2C2S</th>
+                <th>Émission de rayons-X.</th>
+            </tr>
+            </tbody>
+        </table> -->
+    </section>
+</main>
+</body>
+</html>

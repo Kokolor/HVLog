@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HVLog - Présentation</title>
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <h1>Présentation</h1>
+    <p>Je m'appelle [et non mon ami. <strong>caca mdrrrr</strong>. Sinon, on va me dire "ouais t'es fou comme Mr
+        Bricolage, il veut son job], j'ai bientôt 15 ans. Depuis très jeune, je suis attiré par la programmation.
+        Je suis passé du développement au hardware, pour compiler des projets de plus en plus gros. J’ai enchaîné sur la
+        soudure, puis l’électronique très basique. Puis j’ai fini par tomber amoureux de la haute tension.
+
+        J’ai commencé sur un des fameux modules de générateur d’arcs AliExpress, j’ai ensuite trouvé mon premier flyback
+        piloté par un driver extrêmement faible. Je me suis ensuite fait un ZVS, puis commencé à expérimenter avec mes
+        premiers MOT.
+
+        J’ai fait des Jacob’s Ladder, figures de Lichtenberg puis ma première bobine Tesla (de type SGTC) avec un NST
+        de 9 kV à 50mA.
+    </p>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

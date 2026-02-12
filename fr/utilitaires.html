@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>HVLog - Utilitaires</title>
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <section>
+        <h2>Utilitaires</h2>
+
+        <div class="project-grid">
+            <a href="ohm.html" class="card">
+                <h3>Calculateur Loi d'Ohm</h3>
+                <p>Calculer la Loi d'Ohm</p>
+                <div>
+                    <span class="tag">Calculette</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="project-grid">
+            <a href="rayons-x.html" class="card">
+                <h3>Calculateur d'atténuation de rayons-x</h3>
+                <p>Calculer l'attenuation des rayons-x</p>
+                <div>
+                    <span class="tag">Calculette</span>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

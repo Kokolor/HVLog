@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HVLog - Présentation</title>
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <h1>About me</h1>
+    <p>I'm 15 years old. since I'm a kid, I'm interested in coding. I went from hardware (to build a lot of heavy
+        projects) to
+        very basic electronics and soldering. After this small introduction to electronics, I fell in love with high
+        voltage!
+
+        I started with a bad "400kV" aliExpress high voltage module. I found a CRT TV a month later, and extracted the
+        flyback transformer. I drove it with a pretty weak driver, but I did a ZVS driver afterward.
+
+        I finally started playing with MOTs. I have done some Jacobs's Ladder, Lichtenberg Figures, Tesla coils and I'm
+        still not dead!
+    </p>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Created with <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

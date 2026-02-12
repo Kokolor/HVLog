@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <title>HVLog - Calculateur Loi d'Ohm</title>
+
+    <style>
+        .calc-container {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #resultat {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <div class="calc-container">
+        <h2>Loi d'Ohm (U = R × I)</h2>
+        <p><small>Remplissez 2 champs pour calculer le 3ème.</small></p>
+
+        <div class="input-group">
+            <label>Tension (U) en Volts :</label>
+            <input type="number" id="u-val" placeholder="Ex: 12">
+        </div>
+        <div class="input-group">
+            <label>Résistance (R) en Ohms :</label>
+            <input type="number" id="r-val" placeholder="Ex: 220">
+        </div>
+        <div class="input-group">
+            <label>Intensité (I) en Ampères :</label>
+            <input type="number" id="i-val" placeholder="Ex: 0.05">
+        </div>
+
+        <button onclick="calculerOhm()">Calculer</button>
+        <div id="resultat"></div>
+    </div>
+
+    <script>
+        function calculerOhm() {
+            let u = document.getElementById('u-val').value;
+            let r = document.getElementById('r-val').value;
+            let i = document.getElementById('i-val').value;
+            let res = document.getElementById('resultat');
+
+            if (u && r && !i) {
+                res.innerHTML = "Intensité (I) = " + (u / r).toFixed(3) + " A";
+            } else if (u && i && !r) {
+                res.innerHTML = "Résistance (R) = " + (u / i).toFixed(3) + " Ω";
+            } else if (r && i && !u) {
+                res.innerHTML = "Tension (U) = " + (r * i).toFixed(3) + " V";
+            } else {
+                res.innerHTML = "Veuillez remplir exactement deux champs.";
+            }
+        }
+    </script>
+</main>
+
+<footer>
+    <p>&copy; 2026 - Créé avec <a href="https://newcss.net/">new.min.css</a></p>
+</footer>
+</body>
+</html>

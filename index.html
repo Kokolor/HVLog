@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HVLog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<script>
+    let path = window.location.pathname;
+    path = path.replace('index.html', '');
+
+    if (!path.endsWith('/')) {
+        path += '/';
+    }
+
+    const finalUrl = window.location.origin + path + "fr/";
+    window.location.replace(finalUrl);
+</script>
+
+</body>
+</html>
