@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HVLog - Les mythes</title>
+    <link rel="stylesheet" href="https://newcss.net/new.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<header class="site-header" id="main-header"></header>
+
+<script>
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-header').innerHTML = data;
+        });
+</script>
+
+<main>
+    <h1>Les mythes en électricité</h1>
+
+    <h2>Le courant, sont des électrons allant à la vitesse de la lumière</h2>
+    <p>
+        C'est une idée très répandue, elle est cependant fausse ! Il est facile d'imaginer que quand on appuie sur un
+        interrupteur, les électrons se déplacent à la vitesse de la lumière pour aller dans la lampe. Néanmoins, les
+        électrons, vont dans le conducteur à une vitesse largement plus faible qu'un escargot.
+    </p>
+    <h3>Alors pourquoi la lumière s'allume-t-elle ?</h3>
+    <p>Les électrons essaient de se déplacer dans le conducteur, "tirés" par la tension électrique, ils vont rebondir de
+        partout. Ils vont subir un nombre choc énorme. Néanmoins, les électrons vont créer un champ électromagnétique
+        qui lui, va être guidé par le conducteur pour se déplacer à une vitesse extrêmement rapide vers la lampe.
+    </p>
+</main>
+</body>
+</html>
